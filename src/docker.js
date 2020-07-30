@@ -35,7 +35,7 @@ const createTag = () => {
 };
 
 const createBuildCommand = (dockerfile, imageName, buildDir, buildArgs) => {
-  let buildCommandPrefix = `docker build -f ${dockerfile} -t ${imageName}`;
+  let buildCommandPrefix = `docker build --squash -f ${dockerfile} -t ${imageName}`;
   if (buildArgs) {
     const argsSuffix = buildArgs.map(arg => `--build-arg ${arg}`).join(' ');
     buildCommandPrefix = `${buildCommandPrefix} ${argsSuffix}`;
